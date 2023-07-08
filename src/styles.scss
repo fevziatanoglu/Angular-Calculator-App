@@ -4,10 +4,11 @@
   --transparent-bg :rgba(255, 255, 255, 0.5);
   --text-color : black;
   --img-filter: none;
+
 }
 [data-theme="dark"]{
     --main-bg : linear-gradient(180deg, rgb(22, 26, 40) 10%, rgb(0, 0, 0) 90%);
-    --secondary-bg: linear-gradient(55deg, rgba(13,37,61,1) 0%, rgba(27,80,107,1) 69%);
+    --secondary-bg: linear-gradient(55deg, rgb(10, 29, 48) 0%, rgb(21, 64, 86) 100%);
     --transparent-bg :rgba(0, 0, 0, 0.255);
     --text-color : white;
     --img-filter: brightness(5);

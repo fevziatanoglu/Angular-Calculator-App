@@ -19,13 +19,12 @@
               <img *ngIf="darkTheme" src="../assets/images/Sun.png">
               <img *ngIf="!darkTheme" src="../assets/images/Moon.png">
             </div>
-
           </div>
-
         </div>
 
+        <!-- last result button -->
         <div class="col-4 d-flex justify-content-center">
-          <button class=" round-button btn ">
+          <button (click)="changeInputByLastResult()" class=" round-button btn ">
             <img class="brightness" src="../assets/images/Clock.png">
           </button>
         </div>
@@ -33,11 +32,20 @@
 
 
 
-      <!-- screen content -->
-      <div class="d-flex justify-content-between  px-5 fw-bolder fs-1">
-        <div>=</div>
-        <div>Numbersss</div>
+
+
+      <div class="d-flex flex-column px-5">
+        <div class="d-flex flex-column">
+             <div class=" text-end fs-2 text-secondary " *ngFor="let last of history">{{last}}</div>
+        </div>
+     
+        <div class="d-flex justify-content-between  fw-bolder fs-1">
+          <div>=</div>
+          <div>{{input}}</div>
+        </div>
       </div>
+      <!-- screen content -->
+
 
 
 
@@ -51,45 +59,44 @@
         <!-- numbers div -->
         <div class="d-flex flex-column  col-8 gap-4  ">
 
-          <div class="d-flex justify-content-between    rounded-5">
-            <button class="button round-button btn ">s</button>
-            <button class="button round-button btn ">s</button>
-            <button class="button round-button btn ">s</button>
+          <div class="operators-container d-flex justify-content-between rounded-5">
+            <button (click)="deleteAll()" class="colorless-button button round-button btn ">AC</button>
+            <button class="colorless-button button round-button btn ">+/-</button>
+            <button (click)="changeInputByOperator($event)" class="colorless-button button round-button btn ">%</button>
           </div>
 
-          <div class="d-flex justify-content-between">
-            <button class="button round-button btn ">s</button>
-            <button class="button round-button btn ">s</button>
-            <button class="button round-button btn ">s</button>
-          </div>
 
           <div class="d-flex justify-content-between">
-            <button class="button round-button btn ">s</button>
-            <button class="button round-button btn ">s</button>
-            <button class="button round-button btn ">s</button>
+            <button (click)="changeInput($event)" class="button round-button btn ">1</button>
+            <button (click)="changeInput($event)" class="button round-button btn ">2</button>
+            <button (click)="changeInput($event)" class="button round-button btn ">3</button>
           </div>
           <div class="d-flex justify-content-between">
-            <button class="button round-button btn ">s</button>
-            <button class="button round-button btn ">s</button>
-            <button class="button round-button btn ">s</button>
+            <button (click)="changeInput($event)" class="button round-button btn ">4</button>
+            <button (click)="changeInput($event)" class="button round-button btn ">5</button>
+            <button (click)="changeInput($event)" class="button round-button btn ">6</button>
           </div>
           <div class="d-flex justify-content-between">
-            <button class="button round-button btn ">s</button>
-            <button class="button round-button btn ">s</button>
-            <button class="button round-button btn ">s</button>
+            <button (click)="changeInput($event)" class="button round-button btn ">7</button>
+            <button (click)="changeInput($event)" class="button round-button btn ">8</button>
+            <button (click)="changeInput($event)" class="button round-button btn ">9</button>
           </div>
-
+          <div class="d-flex justify-content-between">
+            <button (click)="changeInputByOperator($event)" class="button round-button btn ">.</button>
+            <button (click)="changeInput($event)" class="button round-button btn ">0</button>
+            <button (click)="changeInput($event)" class="button round-button btn ">00</button>
+          </div>
 
         </div>
 
         <!-- operators div -->
         <div class=" d-flex flex-column  col-4  gap-4  align-items-center  ">
           <div class="d-flex flex-column gap-4 rounded-5 operators-container">
-            <button class="button colorless-button round-button btn ">s</button>
-            <button class="button colorless-button round-button btn ">s</button>
-            <button class="button colorless-button round-button btn ">s</button>
-            <button class="button colorless-button round-button btn ">s</button>
-            <button class="button colorless-button round-button btn ">s</button>
+            <button (click)="changeInputByOperator($event)" class="button colorless-button round-button btn ">/</button>
+            <button (click)="changeInput($event)" class="button colorless-button round-button btn ">*</button>
+            <button (click)="changeInput($event)" class="button colorless-button round-button btn ">-</button>
+            <button (click)="changeInput($event)" class="button colorless-button round-button btn ">+</button>
+            <button (click)="equalButton()" class="button colorless-button round-button btn ">=</button>
           </div>
 
         </div>

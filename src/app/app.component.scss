@@ -1,16 +1,21 @@
-*{
-    transition: 1s;
-}
+
 
 .main-container {
     height: 100vh;
     border-radius: 2rem;
     color: var(--text-color);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: var(--secondary-bg);
+
 }
 
 .calculator-container {
-    height: 100%;
-    width: 100%;
+    border-radius: 2rem;
+    height: 850px;
+    width: 390px;
     background: var(--main-bg);
 }
 
@@ -31,9 +36,13 @@
     width: 65px;
     border: none;
     font-weight: 500;
-    font-size: 2rem;
+    font-size: 1.5rem;
     display: flex;
     justify-content: center;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .round-button {
@@ -59,3 +68,49 @@ img{
     filter: var(--img-filter)
 }
 
+
+.toggle-button{
+    background: var(--secondary-bg);
+    height: 44px;
+    width: 122px;
+    border-radius: 2rem;
+    display: relative;
+    
+}
+
+.toggle-dot{
+    z-index: 1;
+    transition: .5s;
+    position: absolute;
+    background: var(--main-bg);
+    border-radius: 2rem;
+    height: 44px;
+    width: 68px;
+}
+
+.toggle-icon{
+    transition: .5s;
+    border-radius: 2rem;
+    position: absolute;
+    width: 54px;
+    height: 44px;
+    transform: translateX(120%);
+
+}
+
+.toggle-icon-active{
+    transform: translateX(10%);
+}
+
+.toggle-dot-active{
+    transform: translateX(80%);
+}
+
+
+@media (max-width: 390px) {
+
+    .calculator-container {
+        height: 100%;
+        width: 100%;
+    }
+}
