@@ -5,11 +5,25 @@
     <!-- screen -->
     <div class="d-flex flex-column justify-content-between py-4 screen-container">
 
-      <!-- thema and history -->
+      <!-- theme and history -->
       <div class="d-flex justify-content-end">
         <div class="col-4 d-flex justify-content-center">
-          <button (click)="themeToggle()" class=" round-button btn ">thema change</button>
+
+          <!-- theme toggle button -->
+          <div (click)="toggleTheme()" class="toggle-button">
+            <div [class.toggle-dot-active]="darkTheme" class="toggle-dot d-flex justify-content-center p-2">
+              <img *ngIf="!darkTheme" src="../assets/images/Sun.png">
+              <img *ngIf="darkTheme" src="../assets/images/Moon.png">
+            </div>
+            <div [class.toggle-icon-active]="darkTheme" class="toggle-icon d-flex justify-content-center p-2">
+              <img *ngIf="darkTheme" src="../assets/images/Sun.png">
+              <img *ngIf="!darkTheme" src="../assets/images/Moon.png">
+            </div>
+
+          </div>
+
         </div>
+
         <div class="col-4 d-flex justify-content-center">
           <button class=" round-button btn ">
             <img class="brightness" src="../assets/images/Clock.png">
@@ -30,64 +44,66 @@
     </div>
 
 
-<div class="d-flex flex-column  buttons-container justify-content-center ">
-    <!-- buttons -->
-    <div class="d-flex flex-row p-3  ">
+    <div class="d-flex flex-column  buttons-container justify-content-center ">
+      <!-- buttons -->
+      <div class="d-flex flex-row p-3  ">
 
-      <!-- numbers div -->
-      <div class="d-flex flex-column  col-8 gap-4  ">
+        <!-- numbers div -->
+        <div class="d-flex flex-column  col-8 gap-4  ">
 
-        <div class="d-flex justify-content-between    rounded-5">
-          <button class="button round-button btn ">s</button>
-          <button class="button round-button btn ">s</button>
-          <button class="button round-button btn ">s</button>
+          <div class="d-flex justify-content-between    rounded-5">
+            <button class="button round-button btn ">s</button>
+            <button class="button round-button btn ">s</button>
+            <button class="button round-button btn ">s</button>
+          </div>
+
+          <div class="d-flex justify-content-between">
+            <button class="button round-button btn ">s</button>
+            <button class="button round-button btn ">s</button>
+            <button class="button round-button btn ">s</button>
+          </div>
+
+          <div class="d-flex justify-content-between">
+            <button class="button round-button btn ">s</button>
+            <button class="button round-button btn ">s</button>
+            <button class="button round-button btn ">s</button>
+          </div>
+          <div class="d-flex justify-content-between">
+            <button class="button round-button btn ">s</button>
+            <button class="button round-button btn ">s</button>
+            <button class="button round-button btn ">s</button>
+          </div>
+          <div class="d-flex justify-content-between">
+            <button class="button round-button btn ">s</button>
+            <button class="button round-button btn ">s</button>
+            <button class="button round-button btn ">s</button>
+          </div>
+
+
         </div>
 
-        <div class="d-flex justify-content-between">
-          <button class="button round-button btn ">s</button>
-          <button class="button round-button btn ">s</button>
-          <button class="button round-button btn ">s</button>
-        </div>
+        <!-- operators div -->
+        <div class=" d-flex flex-column  col-4  gap-4  align-items-center  ">
+          <div class="d-flex flex-column gap-4 rounded-5 operators-container">
+            <button class="button colorless-button round-button btn ">s</button>
+            <button class="button colorless-button round-button btn ">s</button>
+            <button class="button colorless-button round-button btn ">s</button>
+            <button class="button colorless-button round-button btn ">s</button>
+            <button class="button colorless-button round-button btn ">s</button>
+          </div>
 
-        <div class="d-flex justify-content-between">
-          <button class="button round-button btn ">s</button>
-          <button class="button round-button btn ">s</button>
-          <button class="button round-button btn ">s</button>
-        </div>
-        <div class="d-flex justify-content-between">
-          <button class="button round-button btn ">s</button>
-          <button class="button round-button btn ">s</button>
-          <button class="button round-button btn ">s</button>
-        </div>
-        <div class="d-flex justify-content-between">
-          <button class="button round-button btn ">s</button>
-          <button class="button round-button btn ">s</button>
-          <button class="button round-button btn ">s</button>
         </div>
 
 
       </div>
 
-      <!-- operators div -->
-      <div class=" d-flex flex-column  col-4  gap-4  align-items-center  ">
-        <div class="d-flex flex-column gap-4 rounded-5 operators-container">
-          <button class="button colorless-button round-button btn ">s</button>
-          <button class="button colorless-button round-button btn ">s</button>
-          <button class="button colorless-button round-button btn ">s</button>
-          <button class="button colorless-button round-button btn ">s</button>
-          <button class="button colorless-button round-button btn ">s</button>
-        </div>
-
+      <div class="d-flex justify-content-center">
+        <hr>
       </div>
 
 
     </div>
-   
-  <div class="d-flex justify-content-center"><hr ></div>
 
-
-    </div>
-   
 
 
   </div>
