@@ -36,9 +36,9 @@
 
       <div class="d-flex flex-column px-5">
         <div class="d-flex flex-column">
-             <div class=" text-end fs-2 text-secondary " *ngFor="let last of history">{{last}}</div>
+          <div class=" text-end fs-2 text-secondary " *ngFor="let last of history">{{last}}</div>
         </div>
-     
+
         <div class="d-flex justify-content-between  fw-bolder fs-1">
           <div>=</div>
           <div>{{input}}</div>
@@ -52,62 +52,55 @@
     </div>
 
 
-    <div class="d-flex flex-column  buttons-container justify-content-center ">
-      <!-- buttons -->
-      <div class="d-flex flex-row p-3  ">
+    <div class="buttons-container p-4 py-4  bg-danger">
 
-        <!-- numbers div -->
-        <div class="d-flex flex-column  col-8 gap-4  ">
+      <!-- top buttons -->
+      <div class="top-buttons-grid  ">
+        <div class="d-flex justify-content-between   operators-container">
+          <div (click)="deleteAll()" class="button colorless-button">AC</div>
+          <div class="button colorless-button"></div>
+          <div (click)="changeInputByOperator($event)" class="button colorless-button">%</div>
+        </div>
+      </div>
 
-          <div class="operators-container d-flex justify-content-between rounded-5">
-            <button (click)="deleteAll()" class="colorless-button button round-button btn ">AC</button>
-            <button class="colorless-button button round-button btn ">+/-</button>
-            <button (click)="changeInputByOperator($event)" class="colorless-button button round-button btn ">%</button>
-          </div>
+      <!-- right buttons -->
+      <div class="b2 right-buttons-grid d-flex flex-column  align-items-center">
 
+        <div class="h-100 d-flex flex-column justify-content-between operators-container ">
+          <div (click)="changeInputByOperator($event)" class="button colorless-button">/</div>
+          <div (click)="changeInputByOperator($event)" class="button colorless-button">*</div>
+          <div (click)="changeInputByOperator($event)" class="button colorless-button">-</div>
+          <div (click)="changeInputByOperator($event)" class="button colorless-button">+</div>
+          <div (click)="equalButton()" class="button colorless-button">=</div>
+        </div>
+      </div>
 
-          <div class="d-flex justify-content-between">
-            <button (click)="changeInput($event)" class="button round-button btn ">1</button>
-            <button (click)="changeInput($event)" class="button round-button btn ">2</button>
-            <button (click)="changeInput($event)" class="button round-button btn ">3</button>
-          </div>
-          <div class="d-flex justify-content-between">
-            <button (click)="changeInput($event)" class="button round-button btn ">4</button>
-            <button (click)="changeInput($event)" class="button round-button btn ">5</button>
-            <button (click)="changeInput($event)" class="button round-button btn ">6</button>
-          </div>
-          <div class="d-flex justify-content-between">
-            <button (click)="changeInput($event)" class="button round-button btn ">7</button>
-            <button (click)="changeInput($event)" class="button round-button btn ">8</button>
-            <button (click)="changeInput($event)" class="button round-button btn ">9</button>
-          </div>
-          <div class="d-flex justify-content-between">
-            <button (click)="changeInputByOperator($event)" class="button round-button btn ">.</button>
-            <button (click)="changeInput($event)" class="button round-button btn ">0</button>
-            <button (click)="changeInput($event)" class="button round-button btn ">00</button>
-          </div>
+      <!-- middle buttons -->
+      <div class="b3 d-flex justify-content-around justify-content-lg-between">
 
+        <div class="d-flex flex-column justify-content-between">
+          <div (click)="changeInput($event)" class="button round-button shadow-sm">1</div>
+          <div (click)="changeInput($event)" class="button round-button shadow-sm">4</div>
+          <div (click)="changeInput($event)" class="button round-button shadow-sm">7</div>
+          <div (click)="changeInput($event)" class="button round-button shadow-sm">.</div>
         </div>
 
-        <!-- operators div -->
-        <div class=" d-flex flex-column  col-4  gap-4  align-items-center  ">
-          <div class="d-flex flex-column gap-4 rounded-5 operators-container">
-            <button (click)="changeInputByOperator($event)" class="button colorless-button round-button btn ">/</button>
-            <button (click)="changeInputByOperator($event)" class="button colorless-button round-button btn ">*</button>
-            <button (click)="changeInputByOperator($event)" class="button colorless-button round-button btn ">-</button>
-            <button (click)="changeInputByOperator($event)" class="button colorless-button round-button btn ">+</button>
-            <button (click)="equalButton()" class="button colorless-button round-button btn ">=</button>
-          </div>
+        <div class="d-flex flex-column justify-content-between">
+          <div (click)="changeInput($event)" class="button round-button shadow-sm">2</div>
+          <div (click)="changeInput($event)" class="button round-button shadow-sm">5</div>
+          <div (click)="changeInput($event)" class="button round-button shadow-sm">8</div>
+          <div (click)="changeInput($event)" class="button round-button shadow-sm">0</div>
+        </div>
 
+        <div class="d-flex flex-column justify-content-between">
+          <div (click)="changeInput($event)" class="button round-button shadow-sm">3</div>
+          <div (click)="changeInput($event)" class="button round-button shadow-sm">6</div>
+          <div (click)="changeInput($event)" class="button round-button shadow-sm">9</div>
+          <div (click)="changeInput($event)" class="button round-button shadow-sm">00</div>
         </div>
 
 
       </div>
-
-      <div class="d-flex justify-content-center">
-        <hr>
-      </div>
-
 
     </div>
 
