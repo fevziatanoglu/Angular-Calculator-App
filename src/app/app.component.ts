@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -50,6 +50,28 @@ export class AppComponent {
 
   deleteAll() {
     this.input = "";
+  }
+
+
+  @HostListener('window:keydown', ['$event'])
+  onKeyDown(event: KeyboardEvent) {
+ 
+    const keyCode = event.keyCode || event.which;
+    const keyValue = event.key;
+    console.log(event);
+    // Numbers
+    if (keyCode >= 48 && keyCode <= 57) {
+      this.input += keyValue;
+      this.canWrite = true;
+    }
+    // delete
+    else if(keyCode === 8){
+      this.deleteAll();
+    }
+    // equal button
+    else if(keyCode === 13){
+      this.equalButton();
+    }
   }
 
 }
