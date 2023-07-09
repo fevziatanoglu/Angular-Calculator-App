@@ -33,13 +33,19 @@ export class AppComponent {
     }
   }
 
-  changeInputByLastResult() { this.input += this.lastResult;}
+  changeInputByLastResult() { this.input += this.lastResult; }
 
 
   equalButton() {
-    this.history.push(this.input);
-    this.lastResult = eval(this.input);
-    this.input = eval(this.input);
+    try {
+
+      this.lastResult = eval(this.input);
+      this.history.push(this.input);
+      this.input = eval(this.input);
+    } catch (e) {
+      console.log(e);
+    }
+
   }
 
   deleteAll() {

@@ -4,18 +4,16 @@
     height: 100vh;
     border-radius: 2rem;
     color: var(--text-color);
-
     display: flex;
     justify-content: center;
     align-items: center;
     background: var(--secondary-bg);
-
 }
 
 .calculator-container {
     border-radius: 2rem;
-    height: 850px;
-    width: 390px;
+    height: 90%;
+    width: 550px;
     background: var(--main-bg);
 }
 
@@ -32,8 +30,8 @@
 .button {
     background-color: var(--transparent-bg);
     color: var(--text-color);
-    height: 65px;
-    width: 65px;
+    height: 45px;
+    width: 45px;
     border: none;
     font-weight: 500;
     font-size: 1.5rem;
@@ -51,8 +49,6 @@
 
 .colorless-button{
     background-color: transparent;
-    height: 65px;
-    width: 65px;
 }
 
 .operators-container{
@@ -107,7 +103,13 @@ img{
 }
 
 
-@media (max-width: 390px) {
+@media (max-width: 500px) {
+    
+  
+    .button{
+        height: 65px;
+        width: 65px;
+    }
 
     .calculator-container {
         height: 100%;
