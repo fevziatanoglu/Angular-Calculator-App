@@ -8,8 +8,8 @@ import { Component, HostListener } from '@angular/core';
 export class AppComponent {
   title = 'Angular-Calculator-App';
 
-  lastResult = "";
-  input: string = "";
+  lastResult: number = 0;
+  input: any = "";
   history: string[] = [];
   darkTheme = false;
   canWrite = false;
@@ -50,6 +50,7 @@ export class AppComponent {
 
   deleteAll() {
     this.input = "";
+    this.history = [];
   }
 
 
