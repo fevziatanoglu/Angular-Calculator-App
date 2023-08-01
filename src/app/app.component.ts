@@ -20,7 +20,6 @@ export class AppComponent {
   
   ngOnInit() {
   this.theme = localStorage.getItem('theme') || "light-theme";
-    console.log(localStorage.getItem('theme'));
     document.documentElement.setAttribute('data-theme' , this.theme);
   }
 
