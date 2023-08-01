@@ -9,61 +9,98 @@ export class AppComponent {
   title = 'Angular-Calculator-App';
 
   lastResult: number = 0;
-  input: any = "";
+
+  input: string = "";
   history: string[] = [];
-  darkTheme = false;
-  canWrite = false;
+
+  darkTheme : boolean = false;
+
+  canWriteOperator : boolean = false;
+  canWriteZero : boolean = true;
+  canWriteDot : boolean = false;
 
   toggleTheme() {
     this.darkTheme = !this.darkTheme;
-    document.documentElement.setAttribute('data-theme', this.darkTheme ? "dark" : "light");
+    document.documentElement.setAttribute('data-theme' , this.darkTheme ? "dark" : "light");
   }
 
-
   changeInput(event: any) {
+   
+    console.log(this.input[this.input.length -1 ]);
     this.input += event.target.innerText;
-    console.log(this.input);
-    this.canWrite = true;
+    this.canWriteOperator= true;
+    this.canWriteZero= true;
+    console.log(event);
+    console.log(this.input[this.input.length - 1]);
+    console.log(Number.isInteger(Number(this.input[this.input.length -1 ])));
+  }
+
+  changeInputByZero(event : any){
+    if(this.canWriteZero){
+      this.input += event.target.innerText; 
+      if(!this.canWriteOperator){this.canWriteZero = false;}
+      this.canWriteOperator = true;
+    }
   }
 
   changeInputByOperator(event: any) {
-    if (this.canWrite) {
+    if (this.canWriteOperator) {
       this.input += event.target.innerText;
-      this.canWrite = false;
+      this.canWriteOperator= false;
+      this.canWriteZero = true;
+      this.canWriteDot = true;
+    }
+  } 
+
+  changeInputByDot(){
+
+    if(this.canWriteDot && Number.isInteger(Number.parseInt(this.input[this.input.length -1 ])) ){
+      this.input += ".";
+      this.canWriteDot = false;
+    }
+
+  }
+
+  changeInputByLastResult() {
+    if(this.lastResult){
+      this.input += this.lastResult;
     }
   }
 
-  changeInputByLastResult() { this.input += this.lastResult; }
-
-
   equalButton() {
-    try {
+      if(this.canWriteOperator){
+       this.lastResult = eval(this.input);
+       this.input = eval(this.input);
 
-      this.lastResult = eval(this.input);
-      this.history.push(this.input);
-      this.input = eval(this.input);
-    } catch (e) {
-      console.log(e);
-    }
-
+       if(this.history.length > 4){
+        this.history.shift();
+       }
+       this.history.push(this.input);
+      }
+     
   }
 
   deleteAll() {
     this.input = "";
     this.history = [];
+    this.canWriteOperator= false;
+    this.canWriteZero = true;
   }
 
 
+  // keyboard 
   @HostListener('window:keydown', ['$event'])
   onKeyDown(event: KeyboardEvent) {
  
-    const keyCode = event.keyCode || event.which;
+    const keyCode = event.keyCode;
     const keyValue = event.key;
-    console.log(event);
+
+    
     // Numbers
     if (keyCode >= 48 && keyCode <= 57) {
       this.input += keyValue;
-      this.canWrite = true;
+      this.canWriteOperator= true;
+      console.log(keyValue);
     }
     // delete
     else if(keyCode === 8){

@@ -79,24 +79,24 @@
       <div class="b3 d-flex justify-content-around justify-content-lg-between">
 
         <div class="d-flex flex-column justify-content-between">
-          <div (click)="changeInput($event)" class="button round-button shadow-sm">1</div>
+          <div (click)="changeInput($event)" value="1" class="button round-button shadow-sm">1</div>
           <div (click)="changeInput($event)" class="button round-button shadow-sm">4</div>
           <div (click)="changeInput($event)" class="button round-button shadow-sm">7</div>
-          <div (click)="changeInput($event)" class="button round-button shadow-sm">.</div>
+          <div (click)="changeInputByDot()" class="button round-button shadow-sm">.</div>
         </div>
 
         <div class="d-flex flex-column justify-content-between">
           <div (click)="changeInput($event)" class="button round-button shadow-sm">2</div>
           <div (click)="changeInput($event)" class="button round-button shadow-sm">5</div>
           <div (click)="changeInput($event)" class="button round-button shadow-sm">8</div>
-          <div (click)="changeInput($event)" class="button round-button shadow-sm">0</div>
+          <div (click)="changeInputByZero($event)" class="button round-button shadow-sm">0</div>
         </div>
 
         <div class="d-flex flex-column justify-content-between">
           <div (click)="changeInput($event)" class="button round-button shadow-sm">3</div>
           <div (click)="changeInput($event)" class="button round-button shadow-sm">6</div>
           <div (click)="changeInput($event)" class="button round-button shadow-sm">9</div>
-          <div (click)="changeInput($event)" class="button round-button shadow-sm">00</div>
+          <div (click)="changeInputByZero($event)" class="button round-button shadow-sm">00</div>
         </div>
 
 
