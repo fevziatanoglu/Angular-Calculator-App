@@ -11,55 +11,63 @@ export class AppComponent {
   lastResult: number = 0;
 
   input: string = "";
+  lastNumber: string = "";
   history: string[] = [];
 
-  darkTheme : boolean = false;
-
+  theme : string = "light-theme";
   canWriteOperator : boolean = false;
-  canWriteZero : boolean = true;
-  canWriteDot : boolean = false;
+  
+ 
+  
+  ngOnInit() {
+  this.theme = localStorage.getItem('theme') || "light-theme";
+    console.log(localStorage.getItem('theme'));
+    document.documentElement.setAttribute('data-theme' , this.theme);
+  }
 
   toggleTheme() {
-    this.darkTheme = !this.darkTheme;
-    document.documentElement.setAttribute('data-theme' , this.darkTheme ? "dark" : "light");
+    this.theme =  (this.theme == "light-theme") ? "dark-theme" : "light-theme";
+    document.documentElement.setAttribute('data-theme' , this.theme);
+    localStorage.setItem('theme', (this.theme));
   }
 
-  changeInput(event: any) {
-   
-    console.log(this.input[this.input.length -1 ]);
-    this.input += event.target.innerText;
-    this.canWriteOperator= true;
-    this.canWriteZero= true;
-    console.log(event);
-    console.log(this.input[this.input.length - 1]);
-    console.log(Number.isInteger(Number(this.input[this.input.length -1 ])));
-  }
-
-  changeInputByZero(event : any){
-    if(this.canWriteZero){
-      this.input += event.target.innerText; 
-      if(!this.canWriteOperator){this.canWriteZero = false;}
-      this.canWriteOperator = true;
+  changeInputByNumber(number: string) {
+    if(this.lastNumber === "0"){
+      this.input = this.input.slice(0 , -1) + number;
+      this.lastNumber = number;
+    }else{
+      this.input += number;
+      this.lastNumber += number;
+      this.canWriteOperator= true;
     }
   }
 
-  changeInputByOperator(event: any) {
+  changeInputByOperator(operator: string) {
     if (this.canWriteOperator) {
-      this.input += event.target.innerText;
+      this.lastNumber = "";
+      this.input += operator;
       this.canWriteOperator= false;
-      this.canWriteZero = true;
-      this.canWriteDot = true;
     }
   } 
 
   changeInputByDot(){
-
-    if(this.canWriteDot && Number.isInteger(Number.parseInt(this.input[this.input.length -1 ])) ){
+    if(!this.lastNumber.includes(".") && this.lastNumber !== ""){
       this.input += ".";
-      this.canWriteDot = false;
+      this.lastNumber += ".";
+      this.canWriteOperator = false;
     }
-
   }
+
+  changeInputByUnaryOperator(){
+    if(this.lastNumber !== ""){
+      this.input = this.input.slice(0 , -1 * this.lastNumber.length) + (Number(this.lastNumber) * -1).toString();
+      this.lastNumber = (Number(this.lastNumber) * -1).toString();
+    }
+      
+  }
+
+
+
 
   changeInputByLastResult() {
     if(this.lastResult){
@@ -69,47 +77,55 @@ export class AppComponent {
 
   equalButton() {
       if(this.canWriteOperator){
+
+        if(this.input.includes("--")){
+          this.input = this.input.replace(/--/g, '+');
+         }
+
        this.lastResult = eval(this.input);
        this.input = eval(this.input);
+
+      
+
 
        if(this.history.length > 4){
         this.history.shift();
        }
        this.history.push(this.input);
+       this.canWriteOperator = true;
+       this.lastNumber = "";
       }
-     
   }
 
   deleteAll() {
     this.input = "";
+    this.lastNumber = "";
     this.history = [];
-    this.canWriteOperator= false;
-    this.canWriteZero = true;
   }
 
+  
 
   // keyboard 
-  @HostListener('window:keydown', ['$event'])
-  onKeyDown(event: KeyboardEvent) {
+  // @HostListener('window:keydown', ['$event'])
+  // onKeyDown(event: KeyboardEvent) {
  
-    const keyCode = event.keyCode;
-    const keyValue = event.key;
+  //   const keyCode = event.keyCode;
+  //   const keyValue = event.key;
 
     
-    // Numbers
-    if (keyCode >= 48 && keyCode <= 57) {
-      this.input += keyValue;
-      this.canWriteOperator= true;
-      console.log(keyValue);
-    }
-    // delete
-    else if(keyCode === 8){
-      this.deleteAll();
-    }
-    // equal button
-    else if(keyCode === 13){
-      this.equalButton();
-    }
-  }
+  //   // Numbers
+  //   if (keyCode >= 48 && keyCode <= 57) {
+  //     this.input += keyValue;
+  //     this.canWriteOperator= true;
+  //   }
+  //   // delete
+  //   else if(keyCode === 8){
+  //     this.deleteAll();
+  //   }
+  //   // equal button
+  //   else if(keyCode === 13){
+  //     this.equalButton();
+  //   }
+  // }
 
 }
