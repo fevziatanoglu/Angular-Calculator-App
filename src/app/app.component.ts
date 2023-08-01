@@ -8,13 +8,12 @@ import { Component, HostListener } from '@angular/core';
 export class AppComponent {
   title = 'Angular-Calculator-App';
 
-  lastResult: number = 0;
-
+  lastResult: string = "0";
   input: string = "";
   lastNumber: string = "";
   history: string[] = [];
-
   theme : string = "light-theme";
+
   canWriteOperator : boolean = false;
   
  
@@ -63,15 +62,19 @@ export class AppComponent {
       this.input = this.input.slice(0 , -1 * this.lastNumber.length) + (Number(this.lastNumber) * -1).toString();
       this.lastNumber = (Number(this.lastNumber) * -1).toString();
     }
-      
   }
 
-
-
-
   changeInputByLastResult() {
-    if(this.lastResult){
+    if(this.lastResult && this.lastResult !== "0"){
       this.input += this.lastResult;
+      this.canWriteOperator = true; 
+    }
+  }
+
+  changeInputByDoubleZero(){
+    if(Number(this.lastNumber)){
+      this.input += "00";
+      this.lastNumber +=  "00";
     }
   }
 
@@ -82,10 +85,9 @@ export class AppComponent {
           this.input = this.input.replace(/--/g, '+');
          }
 
-       this.lastResult = eval(this.input);
-       this.input = eval(this.input);
-
-      
+         this.input = eval(this.input).toString();
+         this.lastResult = this.input;
+         this.lastNumber = this.input;
 
 
        if(this.history.length > 4){
@@ -93,7 +95,6 @@ export class AppComponent {
        }
        this.history.push(this.input);
        this.canWriteOperator = true;
-       this.lastNumber = "";
       }
   }
 
