@@ -25,9 +25,11 @@
 }
 
 
-
-
 *{
     margin: 0;
     padding: 0;
+}
+
+img {
+  filter: var(--img-filter)
 }

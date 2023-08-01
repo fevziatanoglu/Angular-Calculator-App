@@ -24,13 +24,13 @@ export class AppComponent {
     document.documentElement.setAttribute('data-theme' , this.theme);
   }
 
-  toggleTheme() {
+  toggleTheme(): void {
     this.theme =  (this.theme == "light-theme") ? "dark-theme" : "light-theme";
     document.documentElement.setAttribute('data-theme' , this.theme);
     localStorage.setItem('theme', (this.theme));
   }
 
-  changeInputByNumber(number: string) {
+  changeInputByNumber(number: string): void {
     if(this.lastNumber === "0"){
       this.input = this.input.slice(0 , -1) + number;
       this.lastNumber = number;
@@ -41,7 +41,7 @@ export class AppComponent {
     }
   }
 
-  changeInputByOperator(operator: string) {
+  changeInputByOperator(operator: string): void {
     if (this.canWriteOperator) {
       this.lastNumber = "";
       this.input += operator;
@@ -49,7 +49,7 @@ export class AppComponent {
     }
   } 
 
-  changeInputByDot(){
+  changeInputByDot(): void{
     if(!this.lastNumber.includes(".") && this.lastNumber !== ""){
       this.input += ".";
       this.lastNumber += ".";
@@ -57,28 +57,28 @@ export class AppComponent {
     }
   }
 
-  changeInputByUnaryOperator(){
+  changeInputByUnaryOperator(): void{
     if(this.lastNumber !== ""){
       this.input = this.input.slice(0 , -1 * this.lastNumber.length) + (Number(this.lastNumber) * -1).toString();
       this.lastNumber = (Number(this.lastNumber) * -1).toString();
     }
   }
 
-  changeInputByLastResult() {
+  changeInputByLastResult(): void {
     if(this.lastResult && this.lastResult !== "0"){
       this.input += this.lastResult;
       this.canWriteOperator = true; 
     }
   }
 
-  changeInputByDoubleZero(){
+  changeInputByDoubleZero(): void{
     if(Number(this.lastNumber)){
       this.input += "00";
       this.lastNumber +=  "00";
     }
   }
 
-  equalButton() {
+  equalButton(): void {
       if(this.canWriteOperator){
 
         if(this.input.includes("--")){
@@ -98,7 +98,7 @@ export class AppComponent {
       }
   }
 
-  deleteAll() {
+  deleteAll(): void {
     this.input = "";
     this.lastNumber = "";
     this.history = [];

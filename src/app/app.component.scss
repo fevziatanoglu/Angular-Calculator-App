@@ -20,118 +20,15 @@
     overflow-x: hidden;
 }
 
-.buttons-container {
-    height: 60%;
-    background: var(--secondary-bg);
-    border-radius: 2rem 2rem 2rem 2rem;
 
-    display: grid;
-    grid-template-areas:
-        "top-buttons-grid top-buttons-grid top-buttons-grid right-buttons-grid"
-        "b3 b3 b3 right-buttons-grid"
-        "b3 b3 b3 right-buttons-grid"
-        "b3 b3 b3 right-buttons-grid";
-}
-
-.top-buttons-grid {
-    grid-area: top-buttons-grid;
-}
-
-.right-buttons-grid {
-    grid-area: right-buttons-grid;
-}
-
-
-.b3 {
-    grid-area: b3;
-}
-
-
-.button {
-    background-color: var(--transparent-bg);
-    color: var(--text-color);
-    height: 60px;
-    width: 60px;
-    border: none;
-    font-weight: 500;
-    font-size: 1.5rem;
-    display: flex;
-    justify-content: center;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-}
-
-.button:hover{
-    cursor: pointer;
-    opacity: .7;
-}
-
-.round-button {
-    border-radius: 2rem;
-}
-
-.colorless-button {
-    background-color: transparent;
-}
-
-.operators-container {
-    background-color: var(--transparent-bg);
-    border-radius: 3rem;
-}
 
 hr {
     border-top: 5px solid var(--text-color);
     width: 170px;
 }
 
-img {
-    filter: var(--img-filter)
-}
 
 
-.toggle-button {
-    background: var(--secondary-bg);
-    height: 44px;
-    width: 122px;
-    border-radius: 2rem;
-    display: relative;
-}
-
-.toggle-button:hover{
-    cursor: pointer;
-
-}
-
-.toggle-dot {
-    z-index: 1;
-    transition: .5s;
-    position: absolute;
-    background: var(--main-bg);
-    border-radius: 2rem;
-    height: 44px;
-    width: 68px;
-}
-
-.toggle-icon {
-    transition: .5s;
-    border-radius: 2rem;
-    position: absolute;
-    width: 54px;
-    height: 44px;
-    transform: translateX(120%);
-
-}
-
-.toggle-icon-active {
-    transform: translateX(10%);
-}
-
-.toggle-dot-active {
-    transform: translateX(80%);
-}
 
 
 @media (max-width: 500px) {

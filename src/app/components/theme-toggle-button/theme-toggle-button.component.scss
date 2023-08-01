@@ -1,0 +1,46 @@
+
+img {
+    filter: var(--img-filter)
+}
+
+
+.toggle-button {
+    background: var(--secondary-bg);
+    height: 44px;
+    width: 122px;
+    border-radius: 2rem;
+    display: relative;
+}
+
+.toggle-button:hover{
+    cursor: pointer;
+
+}
+
+.toggle-dot {
+    z-index: 1;
+    transition: .5s;
+    position: absolute;
+    background: var(--main-bg);
+    border-radius: 2rem;
+    height: 44px;
+    width: 68px;
+}
+
+.toggle-icon {
+    transition: .5s;
+    border-radius: 2rem;
+    position: absolute;
+    width: 54px;
+    height: 44px;
+    transform: translateX(120%);
+
+}
+
+.toggle-icon-active {
+    transform: translateX(10%);
+}
+
+.toggle-dot-active {
+    transform: translateX(80%);
+}

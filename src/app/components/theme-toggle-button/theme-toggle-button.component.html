@@ -1,0 +1,11 @@
+
+<div (click)="toggleTheme.emit()" class="toggle-button">
+    <div [class.toggle-dot-active]="(theme == 'dark-theme')" class="toggle-dot d-flex justify-content-center p-2">
+      <img *ngIf="!(theme == 'dark-theme')" src="../assets/images/Sun.png">
+      <img *ngIf="(theme == 'dark-theme')" src="../assets/images/Moon.png">
+    </div>
+    <div [class.toggle-icon-active]="(theme == 'dark-theme')" class="toggle-icon d-flex justify-content-center p-2">
+      <img *ngIf="(theme == 'dark-theme')" src="../assets/images/Sun.png">
+      <img *ngIf="!(theme == 'dark-theme')" src="../assets/images/Moon.png">
+    </div>
+  </div>

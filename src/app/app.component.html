@@ -1,111 +1,43 @@
 <!-- main -->
 <div class="main-container">
   <!-- calculator -->
-  <div class="calculator-container ">
+  <div class="calculator-container">
     <!-- screen -->
     <div class="d-flex flex-column justify-content-between py-4 screen-container">
 
-      <!-- theme and history -->
+      <!-- theme and history bar-->
       <div class="d-flex justify-content-end">
-        <div class="col-4 d-flex justify-content-center">
 
-          <!-- theme toggle button -->
-          <div (click)="toggleTheme()" class="toggle-button">
-            <div [class.toggle-dot-active]="(theme == 'dark-theme')" class="toggle-dot d-flex justify-content-center p-2">
-              <img *ngIf="!(theme == 'dark-theme')" src="../assets/images/Sun.png">
-              <img *ngIf="(theme == 'dark-theme')" src="../assets/images/Moon.png">
-            </div>
-            <div [class.toggle-icon-active]="(theme == 'dark-theme')" class="toggle-icon d-flex justify-content-center p-2">
-              <img *ngIf="(theme == 'dark-theme')" src="../assets/images/Sun.png">
-              <img *ngIf="!(theme == 'dark-theme')" src="../assets/images/Moon.png">
-            </div>
-          </div>
+
+        <!-- theme toggle button -->
+        <div class="col-4 d-flex justify-content-center">
+          <app-theme-toggle-button [theme] = "theme"(toggleTheme)="toggleTheme()"/>
         </div>
 
         <!-- last result button -->
         <div class="col-4 d-flex justify-content-center">
-          <button (click)="changeInputByLastResult()" class=" round-button btn ">
-            <img class="brightness" src="../assets/images/Clock.png">
-          </button>
+          <app-last-result-button (changeInputByLastResult)="changeInputByLastResult()"/>
         </div>
       </div>
 
 
-
-
-
-      <div class="d-flex flex-column px-5">
-        <div class="d-flex flex-column">
-          <div class=" text-end fs-2 text-secondary " *ngFor="let lastProcess of history">{{lastProcess}}</div>
-        </div>
-
-        <div class="d-flex justify-content-between  fw-bolder fs-1 ">
-          <div>=</div>
-          <div>{{input}}</div>
-        </div>
-      </div>
       <!-- screen content -->
-
-
-
-
-    </div>
-
-
-    <div class="buttons-container p-4 py-4  bg-danger">
-
-      <!-- top buttons -->
-      <div class="top-buttons-grid  ">
-        <div class="d-flex justify-content-between   operators-container">
-          <div (click)="deleteAll()" class="button colorless-button">AC</div>
-          <div (click)="changeInputByUnaryOperator()" class="button colorless-button">-/+</div>
-          <div (click)="changeInputByOperator('%')" class="button colorless-button">%</div>
-        </div>
-      </div>
-
-      <!-- right buttons -->
-      <div class="b2 right-buttons-grid d-flex flex-column  align-items-center">
-
-        <div class="h-100 d-flex flex-column justify-content-between operators-container ">
-          <div (click)="changeInputByOperator('/')" class="button colorless-button">/</div>
-          <div (click)="changeInputByOperator('*')" class="button colorless-button">*</div>
-          <div (click)="changeInputByOperator('-')" class="button colorless-button">-</div>
-          <div (click)="changeInputByOperator('+')" class="button colorless-button">+</div>
-          <div (click)="equalButton()" class="button colorless-button">=</div>
-        </div>
-      </div>
-
-      <!-- middle buttons -->
-      <div class="b3 d-flex justify-content-around justify-content-lg-between">
-
-        <div class="d-flex flex-column justify-content-between">
-          <div (click)="changeInputByNumber('1')" class="button round-button shadow-sm">1</div>
-          <div (click)="changeInputByNumber('4')" class="button round-button shadow-sm">4</div>
-          <div (click)="changeInputByNumber('7')" class="button round-button shadow-sm">7</div>
-          <div (click)="changeInputByDot()" class="button round-button shadow-sm">.</div>
-        </div>
-
-        <div class="d-flex flex-column justify-content-between">
-          <div (click)="changeInputByNumber('2')" class="button round-button shadow-sm">2</div>
-          <div (click)="changeInputByNumber('5')" class="button round-button shadow-sm">5</div>
-          <div (click)="changeInputByNumber('8')" class="button round-button shadow-sm">8</div>
-          <div (click)="changeInputByNumber('0')" class="button round-button shadow-sm">0</div>
-        </div>
-
-        <div class="d-flex flex-column justify-content-between">
-          <div (click)="changeInputByNumber('3')" class="button round-button shadow-sm">3</div>
-          <div (click)="changeInputByNumber('6')" class="button round-button shadow-sm">6</div>
-          <div (click)="changeInputByNumber('9')" class="button round-button shadow-sm">9</div>
-          <div (click)="changeInputByDoubleZero()" class="button round-button shadow-sm">00</div>
-        </div>
-
-
-      </div>
+      <app-calculator-screen [input]="input" [history]="history"/>
+      
 
     </div>
 
 
+    <!-- calculator - buttons -->
+    <app-calculator-buttons
+    (changeInputByNumber)="changeInputByNumber($event)"
+    (changeInputByOperator)="changeInputByOperator($event)"
+    (changeInputByDot)="changeInputByDot()"
+    (changeInputByUnaryOperator)="changeInputByUnaryOperator()"
+    (changeInputByDoubleZero)="changeInputByDoubleZero()"
+    (equalButton)="equalButton()"
+    (deleteAll)="deleteAll()"
+    />
 
   </div>
-
 </div>
