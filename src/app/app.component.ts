@@ -13,7 +13,6 @@ export class AppComponent {
   lastNumber: string = "";
   history: string[] = [];
   theme : string = "light-theme";
-
   canWriteOperator : boolean = false;
   
  
@@ -101,6 +100,7 @@ export class AppComponent {
     this.input = "";
     this.lastNumber = "";
     this.history = [];
+    this.canWriteOperator = false;
   }
 
   
