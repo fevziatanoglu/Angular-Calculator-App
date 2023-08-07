@@ -22,12 +22,14 @@ export class AppComponent {
     document.documentElement.setAttribute('data-theme' , this.theme);
   }
 
+  // THEME BUTTON
   toggleTheme(): void {
     this.theme =  (this.theme == "light-theme") ? "dark-theme" : "light-theme";
     document.documentElement.setAttribute('data-theme' , this.theme);
     localStorage.setItem('theme', (this.theme));
   }
 
+  // NUMBER BUTTON
   changeInputByNumber(number: string): void {
     if(this.lastNumber === "0"){
       this.input = this.input.slice(0 , -1) + number;
@@ -35,21 +37,22 @@ export class AppComponent {
     }else{
       this.input += number;
       this.lastNumber += number;
-      this.canWriteOperator= true;
     }
+    this.canWriteOperator= true;
   }
 
+  // OPERATOR BUTTON
   changeInputByOperator(operator: string): void {
     if (this.canWriteOperator) {
       this.lastNumber = "";
       this.input += operator;
-     
-    }else{
+    }else if(this.lastNumber === ""){
       this.input = this.input.slice(0 , -1) + operator;
     }
     this.canWriteOperator= false;
   } 
 
+  // DOT BUTTON
   changeInputByDot(): void{
     if(!this.lastNumber.includes(".") && this.lastNumber !== ""){
       this.input += ".";
@@ -57,28 +60,32 @@ export class AppComponent {
       this.canWriteOperator = false;
     }
   }
-
+  
+  // PREFIX BUTTON
   changeInputByUnaryOperator(): void{
     if(this.lastNumber !== ""){
       this.input = this.input.slice(0 , -1 * this.lastNumber.length) + (Number(this.lastNumber) * -1).toString();
       this.lastNumber = (Number(this.lastNumber) * -1).toString();
     }
   }
-
+   
+  // LAST RESULT BUTTON
   changeInputByLastResult(): void {
     if(this.lastResult && this.lastResult !== "0"){
       this.input += this.lastResult;
       this.canWriteOperator = true; 
     }
   }
-
+  
+  // 00 BUTTON
   changeInputByDoubleZero(): void{
-    if(Number(this.lastNumber)){
+    if(Number(this.lastNumber) || !this.lastNumber.includes(".")){
       this.input += "00";
       this.lastNumber +=  "00";
     }
   }
-
+  
+  // RESULT BUTTON
   equalButton(): void {
       if(this.canWriteOperator){
        
@@ -86,9 +93,15 @@ export class AppComponent {
         if(this.input.includes("--")){
           this.input = this.input.replace(/--/g, '+');
          }
-
+             
          this.history.push(this.input);
+
          this.input = eval(this.input).toString();
+          
+         if (!isFinite(Number(this.input)) || isNaN(Number(this.input))) {
+           this.deleteAll();
+        }
+
          this.lastResult = this.input;
          this.lastNumber = this.input;
 
@@ -100,7 +113,8 @@ export class AppComponent {
        this.canWriteOperator = true;
       }
   }
-
+  
+  // AC BUTTON
   deleteAll(): void {
     this.input = "";
     this.lastNumber = "";
@@ -109,30 +123,4 @@ export class AppComponent {
     this.input = "0";
     this.lastNumber = "0";
   }
-
-  
-
-  // keyboard 
-  // @HostListener('window:keydown', ['$event'])
-  // onKeyDown(event: KeyboardEvent) {
- 
-  //   const keyCode = event.keyCode;
-  //   const keyValue = event.key;
-
-    
-  //   // Numbers
-  //   if (keyCode >= 48 && keyCode <= 57) {
-  //     this.input += keyValue;
-  //     this.canWriteOperator= true;
-  //   }
-  //   // delete
-  //   else if(keyCode === 8){
-  //     this.deleteAll();
-  //   }
-  //   // equal button
-  //   else if(keyCode === 13){
-  //     this.equalButton();
-  //   }
-  // }
-
 }
