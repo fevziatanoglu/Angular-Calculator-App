@@ -15,6 +15,13 @@ The Angular Calculator App is a simple web application built using Angular that 
 - Modulus: Calculate the remainder when the first number is divided by the second.
 - Dark and Light Themes: Choose between dark and light themes for better user experience.
 
+**Usage:**
+
+1. Enter the first number in the input field.
+2. Choose the arithmetic operation from the available options (+, -, *, / , % , -/+ ).
+3. Enter the second number in the input field.
+4. Click the "Calculate" button to see the result.
+  
 **Demo:**
 Check out the live demo of the app [here](angular-calculator-app-taupe.vercel.app/).
 
@@ -46,12 +53,7 @@ Check out the live demo of the app [here](angular-calculator-app-taupe.vercel.ap
 
 5. Open your web browser and visit `http://localhost:4200/` to access the app.
 
-**Usage:**
 
-1. Enter the first number in the input field.
-2. Choose the arithmetic operation from the available options (+, -, *, / , % , -/+ ).
-3. Enter the second number in the input field.
-4. Click the "Calculate" button to see the result.
 
 **Contributing:**
 
