@@ -43,8 +43,11 @@ export class AppComponent {
     if (this.canWriteOperator) {
       this.lastNumber = "";
       this.input += operator;
-      this.canWriteOperator= false;
+     
+    }else{
+      this.input = this.input.slice(0 , -1) + operator;
     }
+    this.canWriteOperator= false;
   } 
 
   changeInputByDot(): void{
