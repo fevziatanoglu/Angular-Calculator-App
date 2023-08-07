@@ -4,11 +4,9 @@
 ![image](https://github.com/fevziatanoglu/Angular-Calculator-App/assets/95905332/08460c73-52a8-4894-8b94-b8834f9049be)
 
 **Description:**
-
 The Angular Calculator App is a simple web application built using Angular that provides basic arithmetic calculations. It allows users to perform addition, subtraction, multiplication, and division operations on multiple numbers. The app offers a user-friendly interface and delivers quick and accurate results.
 
 **Features:**
-
 - Addition: Add two numbers together.
 - Subtraction: Subtract the second number from the first.
 - Multiplication: Multiply the two numbers.
@@ -18,7 +16,6 @@ The Angular Calculator App is a simple web application built using Angular that 
 - Dark and Light Themes: Choose between dark and light themes for better user experience.
 
 **Demo:**
-
 Check out the live demo of the app [here](angular-calculator-app-taupe.vercel.app/).
 
 **Installation:**
@@ -60,13 +57,4 @@ Check out the live demo of the app [here](angular-calculator-app-taupe.vercel.ap
 
 Contributions are welcome! If you find any issues or have improvements to suggest, please open an issue or create a pull request.
 
-**Acknowledgments:**
-
-Special thanks to [Fevzi Atanoglu](https://github.com/fevziatanoglu) for creating this project.
-
-
-
-Note: Make sure to replace the `screenshot.png` link with the actual screenshot of your calculator app. Also, update the `License` section and provide the appropriate license file if different from the MIT License.
-
-Feel free to modify the template as per your preferences and add more details to suit your project's specific requirements.
 
