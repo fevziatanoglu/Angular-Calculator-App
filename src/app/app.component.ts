@@ -9,8 +9,8 @@ export class AppComponent {
   title = 'Angular-Calculator-App';
 
   lastResult: string = "0";
-  input: string = "";
-  lastNumber: string = "";
+  input: string = "0";
+  lastNumber: string = "0";
   history: string[] = [];
   theme : string = "light-theme";
   canWriteOperator : boolean = false;
@@ -78,11 +78,13 @@ export class AppComponent {
 
   equalButton(): void {
       if(this.canWriteOperator){
-
+       
+        
         if(this.input.includes("--")){
           this.input = this.input.replace(/--/g, '+');
          }
 
+         this.history.push(this.input);
          this.input = eval(this.input).toString();
          this.lastResult = this.input;
          this.lastNumber = this.input;
@@ -91,7 +93,7 @@ export class AppComponent {
        if(this.history.length > 4){
         this.history.shift();
        }
-       this.history.push(this.input);
+       
        this.canWriteOperator = true;
       }
   }
@@ -101,6 +103,8 @@ export class AppComponent {
     this.lastNumber = "";
     this.history = [];
     this.canWriteOperator = false;
+    this.input = "0";
+    this.lastNumber = "0";
   }
 
   
