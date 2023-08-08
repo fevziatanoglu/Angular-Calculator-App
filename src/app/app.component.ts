@@ -16,7 +16,7 @@ export class AppComponent {
   canWriteOperator : boolean = false;
   
  
-  
+  // SET THEME
   ngOnInit() {
   this.theme = localStorage.getItem('theme') || "light-theme";
     document.documentElement.setAttribute('data-theme' , this.theme);
@@ -79,9 +79,10 @@ export class AppComponent {
   
   // 00 BUTTON
   changeInputByDoubleZero(): void{
-    if(Number(this.lastNumber) || !this.lastNumber.includes(".")){
+    if(Number(this.lastNumber) || this.lastNumber.includes(".")){
       this.input += "00";
       this.lastNumber +=  "00";
+      this.canWriteOperator = true; 
     }
   }
   
@@ -100,6 +101,7 @@ export class AppComponent {
           
          if (!isFinite(Number(this.input)) || isNaN(Number(this.input))) {
            this.deleteAll();
+           this.history.push("Invalid operation!");
         }
 
          this.lastResult = this.input;
